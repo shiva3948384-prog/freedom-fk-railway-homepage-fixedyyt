@@ -1,0 +1,16 @@
+Railway deployment notes
+
+Added deployment files:
+- Dockerfile
+- start.sh
+- router.php
+
+Navigation-only edits:
+- Updated local page links (href attributes) in freedom-fk/index.html and product snapshot PHP pages so clicks stay on the Railway domain instead of returning to the Hostinger domain.
+- Image URLs, CSS, layout markup, styling, product content, and scripts were not intentionally changed.
+
+Railway root route:
+- / serves freedom-fk/index.html through router.php.
+- /freedom-fk/products/index.php?id=... resolves the exported product snapshot.
+
+Deploy the complete ZIP contents to the same GitHub repository root used by Railway.

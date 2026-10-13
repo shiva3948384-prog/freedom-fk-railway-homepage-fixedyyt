@@ -1,4 +1,232 @@
 <!DOCTYPE html><html lang="en-IN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Freedom Sale Store</title>
+  <meta name="description" content="Freedom sale ecommerce storefront showcasing flash deals, mobile phones, and electronic products.">
+  <meta property="og:title" content="Freedom Sale Store">
+  <meta property="og:description" content="Freedom sale ecommerce storefront showcasing flash deals, mobile phones, and electronic products.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f1f2f4;
+      color: #212121;
+    }
+    #mainApp {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      min-height: 100vh;
+      box-shadow: 0 0 16px rgba(0,0,0,0.08);
+    }
+    .top-image-full img, .banner-image-full img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .categories-container {
+      background: #fff;
+      padding: 12px 6px 8px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .categories-grid {
+      display: flex;
+      justify-content: space-around;
+      gap: 8px;
+    }
+    .category-item {
+      text-align: center;
+      min-width: 64px;
+    }
+    .category-item a {
+      text-decoration: none;
+      color: #212121;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .category-item img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+    }
+    .category-label {
+      font-size: 11px;
+      font-weight: 500;
+      margin-top: 4px;
+      margin-bottom: 0;
+      white-space: nowrap;
+    }
+    .deal-bar {
+      background: #2874f0;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px;
+    }
+    .deal-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .deal-dot {
+      width: 9px;
+      height: 9px;
+      background: #ff3b30;
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulse 1.4s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(1.3); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .deal-timer b {
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .deal-btn {
+      background: #fff;
+      color: #2874f0;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 4px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .list {
+      display: flex;
+      flex-direction: column;
+      background: #f1f2f4;
+      gap: 6px;
+      padding: 6px 0;
+    }
+    .item {
+      display: flex;
+      background: #fff;
+      padding: 12px;
+      text-decoration: none;
+      color: inherit;
+      gap: 12px;
+      align-items: flex-start;
+      transition: background 0.15s;
+    }
+    .item:hover {
+      background: #fafafa;
+    }
+    .img-wrap {
+      width: 105px;
+      min-width: 105px;
+      height: 130px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .img-wrap img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    .details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .details .title {
+      font-size: 13px;
+      font-weight: 500;
+      color: #212121;
+      line-height: 1.35;
+      margin-bottom: 4px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .rating-row {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      margin-bottom: 4px;
+    }
+    .rating-row .stars {
+      color: #388e3c;
+      font-size: 11px;
+    }
+    .rating-row .count {
+      color: #878787;
+    }
+    .rating-row .assured {
+      height: 14px;
+      margin-left: 4px;
+    }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 3px;
+    }
+    .price-row .disc {
+      color: #388e3c;
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .price-row .mrp {
+      color: #878787;
+      text-decoration: line-through;
+      font-size: 12px;
+    }
+    .price-row .sell {
+      font-size: 16px;
+      font-weight: 700;
+      color: #212121;
+    }
+    .wow {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      background: #fff8e5;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-bottom: 4px;
+      width: fit-content;
+    }
+    .wow img {
+      height: 13px;
+    }
+    .wow-price {
+      font-weight: 700;
+      color: #212121;
+    }
+    .wow-text {
+      color: #878787;
+    }
+    .stock-text {
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .delivery {
+      font-size: 11px;
+      color: #555;
+    }
+  </style>
+</head>
   <body class="">
     
 
@@ -374,4 +602,20 @@
     
   
 
+    <script>
+      (function() {
+        let totalSeconds = 599;
+        const mEl = document.getElementById('dbMin');
+        const sEl = document.getElementById('dbSec');
+        if (mEl && sEl) {
+          setInterval(function() {
+            if (totalSeconds > 0) totalSeconds--;
+            const m = Math.floor(totalSeconds / 60);
+            const s = totalSeconds % 60;
+            mEl.textContent = m < 10 ? '0' + m : '' + m;
+            sEl.textContent = s < 10 ? '0' + s : '' + s;
+          }, 1000);
+        }
+      })();
+    </script>
 </body></html>

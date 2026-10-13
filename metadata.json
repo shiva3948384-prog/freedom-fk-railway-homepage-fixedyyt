@@ -1,0 +1,8 @@
+{
+  "name": "Freedom Sale Store",
+  "description": "Freedom sale ecommerce storefront showcasing flash deals, mobile phones, and electronic products.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
